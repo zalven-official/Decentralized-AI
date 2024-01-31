@@ -2,7 +2,12 @@
   <div data-theme="dim">
     <Drawer />
     <Navbar />
-    <RouterView />
+    <div class="flex min-h-screen w-full justify-center p-0 lg:p-10">
+      <div class="max-w-5xl">
+        <RouterView />
+      </div>
+    </div>
+    <Footer />
   </div>
 </template>
 
@@ -10,4 +15,5 @@
 import { RouterView } from 'vue-router';
 import Navbar from '@/components/common/Navbar.vue';
 import Drawer from '@/components/common/Drawer.vue';
+import Footer from '@/components/common/Footer.vue';
 </script>
