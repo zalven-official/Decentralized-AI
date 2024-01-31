@@ -1,6 +1,9 @@
 <template>
-  <div class="flex  rounded-md ">
-    <router-link to="/" class="hover:text-primary">
+  <div class="flex rounded-md">
+    <router-link
+      to="/"
+      class="hover:text-primary"
+    >
       <ArrowUturnLeftIcon class="m-3 h-6 w-6" />
     </router-link>
     <div>
@@ -8,8 +11,7 @@
         {{ header }}
       </p>
       <p class="group hover:text-primary">
-        <strong>Model:</strong>
-        {{ modelName }}
+        <strong>Model:</strong> {{ modelName }}
       </p>
       <p class="max-w-md text-sm font-thin">
         {{ description }}
@@ -19,9 +21,9 @@
 </template>
 <script setup lang="ts">
 import { ArrowUturnLeftIcon } from '@heroicons/vue/24/solid';
-const props = defineProps({
-  header: String,
-  modelName: String,
-  description: String
+defineProps({
+  header: { type: String, required: true },
+  modelName: { type: String, required: true },
+  description: { type: String, required: true }
 });
 </script>

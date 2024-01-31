@@ -13,7 +13,10 @@ export default {
   ],
 
   theme: {},
-  plugins: [animate, require('daisyui')],
+  plugins: [
+    animate,
+    require('daisyui')  // eslint-disable-line no-undef
+  ],
   daisyui: {
     themes: ["dim", "dark", "cupcake"],
   },
