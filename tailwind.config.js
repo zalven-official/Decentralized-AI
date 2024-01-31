@@ -13,5 +13,5 @@ export default {
   ],
 
   theme: {},
-  plugins: [animate]
+  plugins: [animate, require("daisyui")]
 };
