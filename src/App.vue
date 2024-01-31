@@ -3,7 +3,7 @@
     <Drawer />
     <Navbar />
     <div class="flex min-h-screen w-full justify-center p-0 lg:p-10">
-      <div class="max-w-5xl">
+      <div class="w-full max-w-5xl">
         <RouterView />
       </div>
     </div>
