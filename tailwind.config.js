@@ -13,5 +13,8 @@ export default {
   ],
 
   theme: {},
-  plugins: [animate, require("daisyui")]
+  plugins: [animate, require('daisyui')],
+  daisyui: {
+    themes: ["dim", "dark", "cupcake"],
+  },
 };

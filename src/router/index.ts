@@ -14,7 +14,8 @@ import {
   MagnifyingGlassCircleIcon,
   EyeIcon,
   PhoneIcon,
-  PencilIcon
+  PencilIcon,
+  FolderIcon
 } from '@heroicons/vue/24/solid';
 
 export const routes: Route[] = [
@@ -47,7 +48,7 @@ export const routes: Route[] = [
     description: 'Use data to predict future trends and make informed decisions.'
   },
   {
-    icon: MagnifyingGlassCircleIcon,
+    icon: FolderIcon,
     name: 'Image To Text',
     path: '/image-to-text',
     component: () => import('@/pages/ImageToText.vue'),
