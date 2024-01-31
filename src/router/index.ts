@@ -111,7 +111,7 @@ export const routes: Route[] = [
   }
 ];
 
-const publicRoutes = [
+const publicRoutes: Route[] = [
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
@@ -124,6 +124,7 @@ const publicRoutes = [
     component: () => import('@/pages/Home.vue')
   }
 ];
+
 const router = createRouter({
   history: createWebHistory(process.env.VUE_BASE_PATH ?? ''),
   routes: [...routes, ...publicRoutes]
