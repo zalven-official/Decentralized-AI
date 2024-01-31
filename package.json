@@ -20,6 +20,7 @@
     "@vee-validate/zod": "^4.12.4",
     "@vue-hero-icons/outline": "^1.7.2",
     "@vueuse/core": "^10.7.2",
+    "@xenova/transformers": "^2.14.2",
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
