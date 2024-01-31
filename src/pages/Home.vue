@@ -1,11 +1,11 @@
 <template>
-  <div >
-    <div class="container mx-auto my-10 px-5 md:px-28 text-center">
+  <div>
+    <div class="container mx-auto my-10 px-5 text-center md:px-28">
       <p class="text-2xl">
-        <span class="font-bold text-primary hover:text-secondary">Decentralized AI </span>
+        <span class="font-bold text-primary hover:text-secondary">Decentralized AI</span>
         Processing in JavaScript
       </p>
-      <p class="p-0 sm:p-3 text-sm font-thin">
+      <p class="p-0 text-sm font-thin sm:p-3">
         This project in the landscape of AI development by enabling seamless, local execution of powerful machine learning
         models directly within the browser, without the need for external API keys or endpoints. This open-source project
         harnesses the capabilities of ONNX (Open Neural Network Exchange), TensorFlow.js, Web Assembly to bring cutting-edge
