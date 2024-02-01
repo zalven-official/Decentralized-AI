@@ -15,6 +15,7 @@ export enum MessageType {
   MODEL_MESSAGE_END = 'model-message-end',
   MODEL_PROCESSING = 'model-processing',
   MODEL_LOADED = 'model-loaded',
+  MODEL_ERROR = 'model-error'
 }
 
 export interface DTOResponse {
@@ -29,3 +30,5 @@ export interface DTOModelMessageEnd extends DTOResponse { }
 export interface DTOModelMessageProcessing extends DTOResponse { }
 
 export interface DTOModelMessageLoaded extends DTOResponse { }
+
+export interface DTOModelMessageError extends DTOResponse { }

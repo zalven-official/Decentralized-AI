@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mx-auto my-10 px-5 text-center md:px-28">
+    <div class="container mx-auto my-10 px-5 pb-5 text-center md:px-28">
       <p class="text-2xl">
         <span class="font-bold text-primary hover:text-secondary">Decentralized AI</span>
         Processing in JavaScript
@@ -21,10 +21,7 @@
           class="group m-2 rounded-md border-b-2 border-primary bg-base-200 p-5 shadow-md hover:bg-base-300"
         >
           <p class="text-md flex content-center items-center justify-start font-bold group-hover:text-primary">
-            <component
-              :is="value.icon"
-              class="mr-3 h-5 w-5"
-            /> {{ value.name }}
+            <component :is="value.icon" class="mr-3 h-5 w-5" /> {{ value.name }}
           </p>
           <p class="m-2 text-xs font-thin group-hover:font-normal">
             {{ value.description }}
