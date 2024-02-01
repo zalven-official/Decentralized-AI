@@ -23,7 +23,6 @@ import Footer from '@/components/common/Footer.vue';
 
 // stores
 import { modelStore } from '@/store/model.store'
-import  { Models } from './types';
 const model = modelStore()
 
 onMounted(() => {

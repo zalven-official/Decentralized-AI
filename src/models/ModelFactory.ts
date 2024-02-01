@@ -1,36 +1,42 @@
-import { pipeline, env, type PipelineType, type WhisperTokenizer } from "@xenova/transformers";
+import { pipeline, env, } from "@xenova/transformers";
+import type { PipelineType, WhisperTokenizer } from "@xenova/transformers";
 import { type Models, type ModelLoader, ModelLoaderStatus, SpeechToTextModels } from "@/types";
 
+interface PipelineFactoryOptions {
+  tokenizer: WhisperTokenizer;
+  model: Models;
+  quantized: boolean;
+  progress_callback?: (progress: number) => void;
+}
 
 class PipelineFactory {
-  public static task: PipelineType;
-  public static model: Models;
-  public static quantized: boolean;
-  public static instance: any = null;
-  public static tokenizer: WhisperTokenizer;
+  static task: PipelineType;
+  static model: Models;
+  static quantized: boolean;
+  static instance: any = null;
 
-  constructor(tokenizer: WhisperTokenizer, model: Models, quantized: boolean) {
-    PipelineFactory.tokenizer = tokenizer;
-    PipelineFactory.model = model;
-    PipelineFactory.quantized = quantized;
-  }
+  constructor(private options: PipelineFactoryOptions) { }
 
-  // Asynchronous method to get a singleton instance of the pipeline
-  static async getInstance(progress_callback: any = null) {
-    if (PipelineFactory.instance === null) {
-      console.log(PipelineFactory.model)
-      PipelineFactory.instance = pipeline(PipelineFactory.task, PipelineFactory.model, {
-        quantized: PipelineFactory.quantized,
+  static async getInstance(progress_callback?: Function) {
+    if (this.instance === null && progress_callback) {
+      this.instance = await pipeline(this.task, this.model, {
+        quantized: this.quantized,
         progress_callback,
-        revision: PipelineFactory.model.includes("medium") ? "no_attentions" : "main",
+        revision: this.model?.includes("/whisper-medium")
+          ? "no_attentions"
+          : "main",
       });
     }
-    return PipelineFactory.instance;
+    return this.instance;
   }
 }
 
 export class SpeechToTextFactory extends PipelineFactory {
-  public static task: PipelineType = "automatic-speech-recognition";
-  public static model: Models = SpeechToTextModels.DISTIL_WHISPER_MEDIUM_EN;
-  public static quantized: boolean = false;
+  static task: PipelineType = "automatic-speech-recognition";
+  static model: Models = SpeechToTextModels.DISTIL_WHISPER_MEDIUM_EN;
+  static quantized: boolean = false;
+
+  constructor(tokenizer: WhisperTokenizer, model: Models, quantized: boolean) {
+    super({ tokenizer, model, quantized });
+  }
 }

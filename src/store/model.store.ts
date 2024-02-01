@@ -22,8 +22,8 @@ export const modelStore = defineStore('model', () => {
     worker.value.postMessage(message);
   }
 
-  const modelLoaderEventListener = (data: any) => {
-    console.log(data)
+  const modelLoaderEventListener = (event: any) => {
+    const message = event.data
   }
 
   return {

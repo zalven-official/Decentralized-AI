@@ -8,5 +8,6 @@ self.addEventListener("message", async (event) => {
 });
 
 const loadModels = async (model: ModelLoader) => {
-  LoadSpeechToTextModel(model)
+  const speechToTextModel = await LoadSpeechToTextModel(model)
+  console.log(speechToTextModel)
 }

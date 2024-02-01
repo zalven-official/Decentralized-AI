@@ -6,14 +6,12 @@ export const LoadSpeechToTextModel = async (data: ModelLoader) => {
   if (p.model !== data.SpeechToText.model || p.quantized !== data.SpeechToText.quantized) {
     p.model = data.SpeechToText.model;
     p.quantized = data.SpeechToText.quantized;
+    if (p.instance !== null) {
+      (await p.getInstance()).dispose();
+      p.instance = null;
+    }
   }
-  console.log(p.model, "--")
-  if (p.instance !== null) {
-    (await p.getInstance()).dispose();
-    p.instance = null;
-  }
-
-  let transcriber = await p.getInstance((data: any) => {
+  return await p.getInstance((data: any) => {
     self.postMessage(data);
   });
 

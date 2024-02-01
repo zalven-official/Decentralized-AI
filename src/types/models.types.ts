@@ -80,12 +80,14 @@ export interface ModelLoader {
   }
 }
 
-
 export enum ModelLoaderStatus {
   INITIALIZE = "initialize",
-  START = "start",
-  IN_PROGRESS = "in-progress",
-  END = "end",
+  INITIATE = "initiate",
+  DOWNLOAD = "download",
+  PROGRESS = "progress",
+  DONE = "done",
+  READ = "ready",
   COMPLETED = "completed",
   FAILED = "failed"
 }
+
