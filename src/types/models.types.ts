@@ -69,10 +69,6 @@ export type Models = (
   TextToTextModels
 )
 
-export enum MessageType {
-  LOAD_MODELS = "loade-models"
-}
-
 export interface ModelLoader {
   SpeechToText: {
     model: SpeechToTextModels
@@ -80,14 +76,4 @@ export interface ModelLoader {
   }
 }
 
-export enum ModelLoaderStatus {
-  INITIALIZE = "initialize",
-  INITIATE = "initiate",
-  DOWNLOAD = "download",
-  PROGRESS = "progress",
-  DONE = "done",
-  READ = "ready",
-  COMPLETED = "completed",
-  FAILED = "failed"
-}
 

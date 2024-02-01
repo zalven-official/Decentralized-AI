@@ -4,14 +4,11 @@ import { type ModelLoader, SpeechToTextModels } from '@/types';
 
 
 export const modelStore = defineStore('model', () => {
-
   const worker = ref()
-
   const createWorker = async () => {
     // Initialize worker
     worker.value = new Worker(new URL('../models/index.ts', import.meta.url), { type: "module" })
-    worker.value.addEventListener("message", modelLoaderEventListener)
-
+    worker.value.addEventListener("message", messengerManager)
     const message: ModelLoader = {
       SpeechToText: {
         model: SpeechToTextModels.DISTIL_WHISPER_MEDIUM_EN,
@@ -22,8 +19,8 @@ export const modelStore = defineStore('model', () => {
     worker.value.postMessage(message);
   }
 
-  const modelLoaderEventListener = (event: any) => {
-    const message = event.data
+  const messengerManager = (event: any) => {
+
   }
 
   return {

@@ -1,5 +1,5 @@
-import { SpeechToTextFactory } from './ModelFactory'
-import { type ModelLoader } from '@/types';
+import { SpeechToTextFactory } from './index'
+import { type ModelLoader, MessageType } from '@/types';
 
 export const LoadSpeechToTextModel = async (data: ModelLoader) => {
   const p = SpeechToTextFactory;
@@ -12,7 +12,6 @@ export const LoadSpeechToTextModel = async (data: ModelLoader) => {
     }
   }
   return await p.getInstance((data: any) => {
-    self.postMessage(data);
+    self.postMessage({ ...data, messageType: MessageType.MODEL_PROCESSING });
   });
-
 }
