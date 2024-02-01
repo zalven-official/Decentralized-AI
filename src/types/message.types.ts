@@ -17,17 +17,15 @@ export enum MessageType {
   MODEL_LOADED = 'model-loaded',
 }
 
-interface DTOResponse {
+export interface DTOResponse {
   messageType: MessageType;
   status: MessageStatus;
 }
 
-export interface DTOModelStart extends DTOResponse {
+export interface DTOModelMessageStart extends DTOResponse { }
 
-}
+export interface DTOModelMessageEnd extends DTOResponse { }
 
-export interface DTOModelEnd extends DTOResponse { }
+export interface DTOModelMessageProcessing extends DTOResponse { }
 
-export interface DTOModelProcessing extends DTOResponse { }
-
-export interface DTOModelLoaded extends DTOResponse { }
+export interface DTOModelMessageLoaded extends DTOResponse { }
