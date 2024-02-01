@@ -12,8 +12,22 @@
 </template>
 
 <script setup lang="ts">
+// dependencies
 import { RouterView } from 'vue-router';
+import { onMounted } from 'vue';
+
+// components
 import Navbar from '@/components/common/Navbar.vue';
 import Drawer from '@/components/common/Drawer.vue';
 import Footer from '@/components/common/Footer.vue';
+
+// stores
+import { modelStore } from '@/store/model.store'
+import  { Models } from './types';
+const model = modelStore()
+
+onMounted(() => {
+  model.createWorker()
+})
+
 </script>
