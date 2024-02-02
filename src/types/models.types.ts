@@ -68,12 +68,3 @@ export type Models = (
   TextToSpeechModels |
   TextToTextModels
 )
-
-export interface ModelLoader {
-  SpeechToText: {
-    model: SpeechToTextModels
-    quantized: boolean
-  }
-}
-
-
