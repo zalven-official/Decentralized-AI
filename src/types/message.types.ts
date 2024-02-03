@@ -10,7 +10,7 @@ export enum MessageStatus {
 }
 
 
-export enum MessageType {
+export enum MessageChannels {
   LOAD_ALL_MODELS = 'load-all-models',
   LOAD_CHAT_BOT_MODEL = 'load-chat-bot-model',
   LOAD_FACE_DETECTION_MODEL = 'load-face-detection-model',

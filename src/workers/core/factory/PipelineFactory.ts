@@ -3,7 +3,7 @@ import { pipeline, env } from "@xenova/transformers";
 
 // types
 import type { PipelineType, WhisperTokenizer } from "@xenova/transformers";
-import { type Models, MessageStatus, SpeechToTextModels, MessageType } from "@/types";
+import { type Models } from "@/types";
 
 env.allowLocalModels = false;
 

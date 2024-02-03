@@ -1,5 +1,5 @@
+import { messageManager } from './messages'
 
-import message from './messages'
 self.addEventListener("message", async (event: MessageEvent) => {
-  self.postMessage(await message(event));
+  self.postMessage(await messageManager(event));
 })

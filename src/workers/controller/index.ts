@@ -68,4 +68,8 @@ export const LoadTextToTextModel = async (data: any) => {
 
 export const HandleError = async (data: any) => {
   return "HandleError"
-} 
+}
+
+export const ModelProcessing = async (data: any) => {
+
+}
