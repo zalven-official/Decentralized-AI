@@ -26,12 +26,12 @@ import Footer from '@/components/common/Footer.vue';
 import { workerStore } from '@/store/worker.store'
 import { modelStore } from '@/store/model.store';
 
-const worker = workerStore()
+
 const model = modelStore()
 
 
 onMounted(() => {
-  worker.createWorker()
+
 })
 
 </script>
