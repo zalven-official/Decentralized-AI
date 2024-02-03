@@ -1,45 +1,53 @@
-import { MessageChannels } from '@/types/index';
-import * as controller from '../controller';
+import { BroadcastChannels, MessageChannels } from '@/types/index';
+import * as  controller from '../controller';
 
-// REST ARCHITECTURE 1 WAY
-export const messageManager = async (event: MessageEvent): Promise<Object> => {
+// PUSHER
+export const broadcast = (broadcast: BroadcastChannels, value: any) => {
+  self.postMessage({ broadcast, value });
+};
+
+// REST ARCHITECTURE
+export const message = async (event: MessageEvent) => {
   const message = event.data?.message as MessageChannels;
+  const value = await messageManager(event, message);
+  self.postMessage(value);
+};
+
+export const messageManager = async (event: MessageEvent, message: MessageChannels) => {
   switch (message) {
     case MessageChannels.LOAD_ALL_MODELS:
-      return controller.LoadAllModels(event.data);
+      return await controller.LoadAllModels(event);
     case MessageChannels.LOAD_CHAT_BOT_MODEL:
-      return controller.LoadChatBotModel(event.data);
+      return await controller.LoadChatBotModel(event);
     case MessageChannels.LOAD_FACE_DETECTION_MODEL:
-      return controller.LoadFaceDetectionModel(event.data);
+      return await controller.LoadFaceDetectionModel(event);
     case MessageChannels.LOAD_FACIAL_RECOGNITION_MODEL:
-      return controller.LoadFacialRecognitionModel(event.data);
+      return await controller.LoadFacialRecognitionModel(event);
     case MessageChannels.LOAD_FORECASTING_MODEL:
-      return controller.LoadForecastingModel(event.data);
+      return await controller.LoadForecastingModel(event);
     case MessageChannels.LOAD_IMAGE_TO_TEXT_MODEL:
-      return controller.LoadImageToTextModel(event.data);
+      return await controller.LoadImageToTextModel(event);
     case MessageChannels.LOAD_PREDICTIVE_TEXT_MODEL:
-      return controller.LoadPredictiveTextModel(event.data);
+      return await controller.LoadPredictiveTextModel(event);
     case MessageChannels.LOAD_OBJECT_DETECTION_MODEL:
-      return controller.LoadObjectDetectionModel(event.data);
+      return await controller.LoadObjectDetectionModel(event);
     case MessageChannels.LOAD_SPEECH_RECOGNITION_MODEL:
-      return controller.LoadSpeechRecognitionModel(event.data);
+      return await controller.LoadSpeechRecognitionModel(event);
     case MessageChannels.LOAD_SPEECH_TO_SPEECH_MODEL:
-      return controller.LoadSpeechToSpeechModel(event.data);
+      return await controller.LoadSpeechToSpeechModel(event);
     case MessageChannels.LOAD_SPEECH_TO_TEXT_MODEL:
-      return controller.LoadSpeechToTextModel(event.data);
+      return await controller.LoadSpeechToTextModel(event);
     case MessageChannels.LOAD_TEXT_TO_IMAGE_MODEL:
-      return controller.LoadTextToImageModel(event.data);
+      return await controller.LoadTextToImageModel(event);
     case MessageChannels.LOAD_TEXT_TO_SPEECH_MODEL:
-      return controller.LoadTextToSpeechModel(event.data);
+      return await controller.LoadTextToSpeechModel(event);
     case MessageChannels.LOAD_TEXT_TO_TEXT_MODEL:
-      return controller.LoadTextToTextModel(event.data);
+      return await controller.LoadTextToTextModel(event);
     case MessageChannels.ERROR:
-      return controller.HandleError(event.data);
+      return await controller.HandleError(event);
     default:
       // Handle unknown message type
       break;
   }
   return {};
 };
-
-// PUSHER

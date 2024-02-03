@@ -6,7 +6,7 @@
       <div class="w-full max-w-5xl">
         <button
           class="btn btn-primary"
-          @click="model.LoadAllModels()"
+          @click="model.LoadSpeechToTextModel()"
         >
           Load All Models
         </button>
@@ -20,7 +20,6 @@
 <script setup lang="ts">
 // dependencies
 import { RouterView } from 'vue-router';
-import { onMounted } from 'vue';
 
 // components
 import Navbar from '@/components/common/Navbar.vue';

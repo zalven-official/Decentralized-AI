@@ -1,79 +1,82 @@
 import { BroadcastChannels } from "@/types";
-export const LoadAllModels = async (data: any) => {
+import { broadcast } from "../messages";
+import { SpeechToTextFactory } from "../core";
+
+export const LoadAllModels = async (event: MessageEvent) => {
   return "LoadAllModels";
 };
 
-export const LoadChatBotModel = async (data: any) => {
+export const LoadChatBotModel = async (event: MessageEvent) => {
   return "LoadChatBotModel";
 };
 
-export const LoadFaceDetectionModel = async (data: any) => {
+export const LoadFaceDetectionModel = async (event: MessageEvent) => {
   return "LoadFaceDetectionModel";
 };
 
-export const LoadFacialRecognitionModel = async (data: any) => {
+export const LoadFacialRecognitionModel = async (event: MessageEvent) => {
   return "LoadFacialRecognitionModel";
 };
 
-export const LoadForecastingModel = async (data: any) => {
+export const LoadForecastingModel = async (event: MessageEvent) => {
   return "LoadForecastingModel";
 };
 
-export const LoadImageToTextModel = async (data: any) => {
+export const LoadImageToTextModel = async (event: MessageEvent) => {
   return "LoadImageToTextModel";
 };
 
-export const LoadPredictiveTextModel = async (data: any) => {
+export const LoadPredictiveTextModel = async (event: MessageEvent) => {
   return "LoadPredictiveTextModel";
 };
 
-export const LoadObjectDetectionModel = async (data: any) => {
+export const LoadObjectDetectionModel = async (event: MessageEvent) => {
   return "LoadObjectDetectionModel";
 };
 
-export const LoadSpeechRecognitionModel = async (data: any) => {
+export const LoadSpeechRecognitionModel = async (event: MessageEvent) => {
   return "LoadSpeechRecognitionModel";
 };
 
-export const LoadSpeechToSpeechModel = async (data: any) => {
+export const LoadSpeechToSpeechModel = async (event: MessageEvent) => {
   return "LoadSpeechToSpeechModel";
 };
 
-export const LoadSpeechToTextModel = async (data: any) => {
-  //   const p = SpeechToTextFactory;
-  //   if (p.model !== data.SpeechToText.model || p.quantized !== data.SpeechToText.quantized) {
-  //     p.model = data.SpeechToText.model;
-  //     p.quantized = data.SpeechToText.quantized;
-  //     if (p.instance !== null) {
-  //       (await p.getInstance()).dispose();
-  //       p.instance = null;
-  //     }
+let i = 0;
+export const LoadSpeechToTextModel = async (event: MessageEvent) => {
+
+  // const p = SpeechToTextFactory;
+  // if (p.model !== data.model || p.quantized !== data.quantized) {
+  //   p.model = data.model;
+  //   p.quantized = data.quantized;
+  //   if (p.instance !== null) {
+  //     (await p.getInstance()).dispose();
+  //     p.instance = null;
   //   }
-  //   return await p.getInstance((data: any) => {
-  //     // messengerManager(MessageType.MODEL_PROCESSING, data.status, { ...data })
-  //   });
-  setTimeout(() => {
-    self.postMessage({ broadcast: BroadcastChannels.MODEL_PROCESSING, data: "good" });
-  }, 1000);
-  return "LoadSpeechToTextModel";
+  // }
+  // const model = await p.getInstance((data: any) => {
+  //   broadcast(BroadcastChannels.MODEL_PROCESSING, data);
+  // });
+
+  console.log("Hello world", i);
+  i += 1;
+  // return model;
+  return true;
 };
 
-export const LoadTextToImageModel = async (data: any) => {
+export const LoadTextToImageModel = async (event: MessageEvent) => {
   return "LoadTextToImageModel";
 };
 
-export const LoadTextToSpeechModel = async (data: any) => {
+export const LoadTextToSpeechModel = async (event: MessageEvent) => {
   return "LoadTextToSpeechModel";
 };
 
-export const LoadTextToTextModel = async (data: any) => {
+export const LoadTextToTextModel = async (event: MessageEvent) => {
   return "LoadTextToTextModel";
 };
 
-export const HandleError = async (data: any) => {
+export const HandleError = async (event: MessageEvent) => {
   return "HandleError";
 };
 
-export const ModelProcessing = async (data: any) => {
-
-};

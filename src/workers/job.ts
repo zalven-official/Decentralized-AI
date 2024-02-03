@@ -4,20 +4,22 @@ export default function createJob(message: MessageChannels, data: Object = {}): 
   const worker = new Worker(new URL('../workers/index.ts', import.meta.url), { type: 'module' });
   return new Job(worker, message, data);
 }
-
+type Listener = Record<MessageChannels | BroadcastChannels, (event?: MessageEvent) => void>
 interface Job {
+
   worker: Worker;
   promise: Promise<any>;
   message: MessageChannels;
-  listeners: Record<MessageChannels | BroadcastChannels, (value?: any) => void>;
-  resolve: (value?: any) => void;
-  reject: (reason?: any) => void;
+  resolve: (event?: MessageEvent) => void;
+  reject: (error?: any) => void;
+  main: (event?: MessageEvent) => void;
 }
 
 class Job {
+  private listeners: Listener = {} as Listener;
 
   constructor(worker: Worker, message: MessageChannels, data: Object = {}) {
-    this.listeners = {};
+    this.listeners = {} as Listener;
     this.worker = worker;
     this.message = message;
 
@@ -34,34 +36,33 @@ class Job {
   }
 
   private listener = (event: MessageEvent) => {
-    const { message, broadcast } = event.data;
-
-    if (this.listeners[message]) {
-      this.listeners[message](event);
-    }
-
-    if (this.listeners[broadcast]) {
+    const broadcast = event.data?.broadcast as BroadcastChannels;
+    if (this.listeners[broadcast] && broadcast in BroadcastChannels) {
       this.listeners[broadcast](event);
+    } else {
+      this.main(event);
     }
   };
 
-  then(callback: (value: MessageEvent) => void): this {
-    this.listeners[this.message] = callback;
+  then(callback: (event?: MessageEvent) => void): this {
+    this.main = callback;
     return this;
   }
 
-  listen(event: BroadcastChannels, callback: (value?: any) => void): this {
+  listen(event: BroadcastChannels, callback: (event?: MessageEvent) => void): this {
     this.listeners[event] = callback;
     return this;
   }
 
   catch(callback: (error: Error) => void): this {
-    this.promise = this.promise.catch(callback).finally(() => this.worker.terminate());
+    this.promise = this.promise.catch(callback);
+    this.worker.terminate();
     return this;
   }
 
   finally(callback: () => void): this {
     this.promise = this.promise.finally(callback);
+    this.worker.terminate();
     return this;
   }
 }
