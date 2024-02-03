@@ -1,42 +1,43 @@
+import { BroadcastChannels } from "@/types";
 export const LoadAllModels = async (data: any) => {
-  return "LoadAllModels"
-}
+  return "LoadAllModels";
+};
 
 export const LoadChatBotModel = async (data: any) => {
-  return "LoadChatBotModel"
-}
+  return "LoadChatBotModel";
+};
 
 export const LoadFaceDetectionModel = async (data: any) => {
-  return "LoadFaceDetectionModel"
-}
+  return "LoadFaceDetectionModel";
+};
 
 export const LoadFacialRecognitionModel = async (data: any) => {
-  return "LoadFacialRecognitionModel"
-}
+  return "LoadFacialRecognitionModel";
+};
 
 export const LoadForecastingModel = async (data: any) => {
-  return "LoadForecastingModel"
-}
+  return "LoadForecastingModel";
+};
 
 export const LoadImageToTextModel = async (data: any) => {
-  return "LoadImageToTextModel"
-}
+  return "LoadImageToTextModel";
+};
 
 export const LoadPredictiveTextModel = async (data: any) => {
-  return "LoadPredictiveTextModel"
-}
+  return "LoadPredictiveTextModel";
+};
 
 export const LoadObjectDetectionModel = async (data: any) => {
-  return "LoadObjectDetectionModel"
-}
+  return "LoadObjectDetectionModel";
+};
 
 export const LoadSpeechRecognitionModel = async (data: any) => {
-  return "LoadSpeechRecognitionModel"
-}
+  return "LoadSpeechRecognitionModel";
+};
 
 export const LoadSpeechToSpeechModel = async (data: any) => {
-  return "LoadSpeechToSpeechModel"
-}
+  return "LoadSpeechToSpeechModel";
+};
 
 export const LoadSpeechToTextModel = async (data: any) => {
   //   const p = SpeechToTextFactory;
@@ -51,25 +52,28 @@ export const LoadSpeechToTextModel = async (data: any) => {
   //   return await p.getInstance((data: any) => {
   //     // messengerManager(MessageType.MODEL_PROCESSING, data.status, { ...data })
   //   });
-  return "LoadSpeechToTextModel"
-}
+  setTimeout(() => {
+    self.postMessage({ broadcast: BroadcastChannels.MODEL_PROCESSING, data: "good" });
+  }, 1000);
+  return "LoadSpeechToTextModel";
+};
 
 export const LoadTextToImageModel = async (data: any) => {
-  return "LoadTextToImageModel"
-}
+  return "LoadTextToImageModel";
+};
 
 export const LoadTextToSpeechModel = async (data: any) => {
-  return "LoadTextToSpeechModel"
-}
+  return "LoadTextToSpeechModel";
+};
 
 export const LoadTextToTextModel = async (data: any) => {
-  return "LoadTextToTextModel"
-}
+  return "LoadTextToTextModel";
+};
 
 export const HandleError = async (data: any) => {
-  return "HandleError"
-}
+  return "HandleError";
+};
 
 export const ModelProcessing = async (data: any) => {
 
-}
+};

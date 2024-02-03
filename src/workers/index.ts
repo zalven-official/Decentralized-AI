@@ -1,5 +1,9 @@
-import { messageManager } from './messages'
+import type { MessageChannels } from '@/types';
+import { messageManager } from './messages';
+
 
 self.addEventListener("message", async (event: MessageEvent) => {
-  self.postMessage(await messageManager(event));
-})
+  const message = event.data?.message as MessageChannels;
+  const value = await messageManager(event);
+  self.postMessage({ message, value });
+});

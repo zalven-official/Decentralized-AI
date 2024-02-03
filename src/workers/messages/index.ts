@@ -1,10 +1,10 @@
-import { MessageChannels } from '@/types/index'
-import * as controller from '../controller'
+import { MessageChannels } from '@/types/index';
+import * as controller from '../controller';
 
 // REST ARCHITECTURE 1 WAY
-export const messageManager = async (event: MessageEvent) => {
-  const messageChannels = event.data?.messageChannels as MessageChannels
-  switch (messageChannels) {
+export const messageManager = async (event: MessageEvent): Promise<Object> => {
+  const message = event.data?.message as MessageChannels;
+  switch (message) {
     case MessageChannels.LOAD_ALL_MODELS:
       return controller.LoadAllModels(event.data);
     case MessageChannels.LOAD_CHAT_BOT_MODEL:
@@ -39,6 +39,7 @@ export const messageManager = async (event: MessageEvent) => {
       // Handle unknown message type
       break;
   }
-}
+  return {};
+};
 
 // PUSHER

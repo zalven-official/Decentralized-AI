@@ -4,7 +4,12 @@
     <Navbar />
     <div class="flex min-h-screen w-full justify-center p-0 lg:p-10">
       <div class="w-full max-w-5xl">
-        <button class="btn btn-primary" @click="model.LoadAllModels()"> Load All Models </button>
+        <button
+          class="btn btn-primary"
+          @click="model.LoadAllModels()"
+        >
+          Load All Models
+        </button>
         <RouterView />
       </div>
     </div>
@@ -23,15 +28,9 @@ import Drawer from '@/components/common/Drawer.vue';
 import Footer from '@/components/common/Footer.vue';
 
 // stores
-import { workerStore } from '@/store/worker.store'
 import { modelStore } from '@/store/model.store';
 
+const model = modelStore();
 
-const model = modelStore()
-
-
-onMounted(() => {
-
-})
 
 </script>
