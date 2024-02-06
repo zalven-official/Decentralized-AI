@@ -1,6 +1,7 @@
-import { BroadcastChannels } from "@/types";
+import { BroadcastChannels, type Models } from "@/types";
 import { broadcast } from "../messages";
-import { SpeechToTextFactory } from "../core";
+import { speechToText } from '../core';
+import storage from "../storage";
 
 export const LoadAllModels = async (event: MessageEvent) => {
   return "LoadAllModels";
@@ -42,26 +43,10 @@ export const LoadSpeechToSpeechModel = async (event: MessageEvent) => {
   return "LoadSpeechToSpeechModel";
 };
 
-let i = 0;
+
 export const LoadSpeechToTextModel = async (event: MessageEvent) => {
-
-  // const p = SpeechToTextFactory;
-  // if (p.model !== data.model || p.quantized !== data.quantized) {
-  //   p.model = data.model;
-  //   p.quantized = data.quantized;
-  //   if (p.instance !== null) {
-  //     (await p.getInstance()).dispose();
-  //     p.instance = null;
-  //   }
-  // }
-  // const model = await p.getInstance((data: any) => {
-  //   broadcast(BroadcastChannels.MODEL_PROCESSING, data);
-  // });
-
-  console.log("Hello world", i);
-  i += 1;
-  // return model;
-  return true;
+  const result = await speechToText(event);
+  return result;
 };
 
 export const LoadTextToImageModel = async (event: MessageEvent) => {

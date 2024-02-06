@@ -1,6 +1,6 @@
 import { MessageChannels, BroadcastChannels } from "@/types";
 
-export default function createJob(message: MessageChannels, data: Object = {}): Job {
+export default function job(message: MessageChannels, data: Object = {}): Job {
   const worker = new Worker(new URL('../workers/index.ts', import.meta.url), { type: 'module' });
   return new Job(worker, message, data);
 }

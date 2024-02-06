@@ -27,7 +27,7 @@ export class PipelineFactory {
       this.instance = await pipeline(this.task, this.model, {
         quantized: this.quantized,
         progress_callback,
-        revision: this.model?.includes("/whisper-medium")
+        revision: this.model?.includes("medium")
           ? "no_attentions"
           : "main",
       });

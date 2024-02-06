@@ -1,2 +1,7 @@
 import { message } from './messages';
-self.addEventListener("message", message);
+import storage from './storage';
+self.addEventListener("message", async (event: MessageEvent) => {
+
+
+  return message(event);
+});
