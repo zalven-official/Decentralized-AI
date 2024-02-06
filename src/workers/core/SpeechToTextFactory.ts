@@ -31,10 +31,25 @@ export const speechToText = async (event: MessageEvent) => {
   try {
     const data = event.data;
     const p = await SpeechToTextFactory.set(data.model as Models, data.quantized);
-    const model = await p.getInstance((data: any) => {
+    const transcriber = await p.getInstance((data: any) => {
       broadcast(BroadcastChannels.MODEL_PROCESSING, data);
     });
-    return { success: true, message: `finished downloading model`, data: model };
+    const time_precision =
+      transcriber.processor.feature_extractor.config.chunk_length /
+      transcriber.model.config.max_source_positions;
+
+    // Storage for chunks to be processed. Initialise with an empty chunk.
+    const chunks_to_process = [
+      {
+        tokens: [],
+        finalised: false,
+      },
+    ];
+
+    console.log({ time_precision, chunks_to_process });
+    return {
+      success: true, message: `finished downloading model`
+    };
   } catch (error) {
     return { success: false, message: `error downloading speech to text model` };
   }

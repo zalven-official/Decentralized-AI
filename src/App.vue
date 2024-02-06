@@ -4,12 +4,12 @@
     <Navbar />
     <div class="flex min-h-screen w-full justify-center p-0 lg:p-10">
       <div class="w-full max-w-5xl">
-        <button
+        <!-- <button
           class="btn btn-primary"
           @click="model.LoadSpeechToTextModel()"
         >
           Load All Models
-        </button>
+        </button> -->
         <RouterView />
       </div>
     </div>
