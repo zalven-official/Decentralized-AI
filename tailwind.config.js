@@ -15,9 +15,9 @@ export default {
   theme: {},
   plugins: [
     animate,
-    require('daisyui')  // eslint-disable-line no-undef
+    require('daisyui') // eslint-disable-line no-undef
   ],
   daisyui: {
-    themes: ["dim", "dark", "cupcake"],
-  },
+    themes: ['dim', 'dark', 'cupcake']
+  }
 };

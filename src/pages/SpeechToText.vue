@@ -4,11 +4,11 @@
     model-name="TranscribeX"
     description="Effortlessly transcribe spoken words into written text with TranscribeX, an advanced speech-to-text model that ensures high accuracy and efficiency."
   />
-  <div class="p-3 mt-10 join">
+  <div class="join mt-10 p-3">
     <button class="btn btn-active rounded-l-full">
-      <MicrophoneIcon class="w-5 h-5 join-item" />
+      <MicrophoneIcon class="join-item h-5 w-5" />
     </button>
-    <select class="select select-primary w-full max-w-xs join-item">
+    <select class="join-item select select-primary w-full max-w-xs">
       <option
         disabled
         selected
@@ -18,7 +18,7 @@
       <option>MACOS Mic default</option>
     </select>
   </div>
-  <div class="grid grid-cols-2 items-center justify-center align-middle mt-5 card">
+  <div class="card mt-5 grid grid-cols-2 items-center justify-center align-middle">
     <div class="col p-3">
       <div class="join w-full">
         <input
@@ -43,18 +43,7 @@
     </div>
     <div class="col-span-2 p-3">
       <div class="join w-full">
-        <input
-          class="input input-bordered join-item w-full rounded-l-full"
-          placeholder="Record"
-        >
-        <button class="btn btn-outline btn-primary join-item rounded-l-full">
-          <PauseCircleIcon class="h-7 w-7" />
-          Pause
-        </button>
-        <button class="btn btn-outline btn-primary join-item rounded-r-full">
-          <PlayCircleIcon class="h-7 w-7" />
-          Record
-        </button>
+        <Recording />
         <button class="btn btn-primary join-item rounded-r-full">
           <PlayCircleIcon class="h-7 w-7" />
           Transcribe
@@ -62,24 +51,16 @@
       </div>
     </div>
     <div class="col-span-2 text-center">
-      <div class="indicator mt-10 mb-4 group">
-        <span class="indicator-item badge badge-primary">live</span> 
-        <button class="btn btn-lg btn-circle btn-outline group-hover:btn-primary">
-          <MicrophoneIcon class="w-10 h-10" />
-        </button>
-      </div>
-      <p> Click for live Transcription</p>
+      <Speaking />
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import Header from '@/components/common/Header.vue';
-import { PlayCircleIcon, LinkIcon, PauseCircleIcon, MicrophoneIcon, FolderIcon } from '@heroicons/vue/24/solid';
+import Recording from '@/components/audio/Recording.vue';
+import Speaking from '@/components/audio/Speaking.vue';
+import { PlayCircleIcon, LinkIcon, MicrophoneIcon, FolderIcon } from '@heroicons/vue/24/solid';
 import { ref, computed } from 'vue';
 
 
-
-const audioManager = () => {
-  
-};
 </script>
