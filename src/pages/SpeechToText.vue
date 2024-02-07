@@ -42,6 +42,13 @@ import MicChanger from '@/components/audio/MicChanger.vue';
 import AudioFile from '@/components/audio/AudioFile.vue';
 import Recording from '@/components/audio/Recording.vue';
 import Speaking from '@/components/audio/Speaking.vue';
-import { PlayCircleIcon, LinkIcon } from '@heroicons/vue/24/solid';
+import { PlayCircleIcon } from '@heroicons/vue/24/solid';
+import { modelStore } from '@/store/model.store';
+
+
+const transcribe = () => {
+
+};
+
 
 </script>
