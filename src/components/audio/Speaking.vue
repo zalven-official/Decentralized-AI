@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <div class="group indicator mb-4 mt-10">
+    <div class="indicator mb-4 mt-10 group">
       <span class="badge indicator-item badge-primary">Live</span>
       <button
         class="btn btn-circle btn-outline btn-lg group-hover:btn-primary"
@@ -10,7 +10,7 @@
         <MicrophoneIcon class="h-10 w-10" />
         <span
           v-if="speaking"
-          className="absolute text-primary loading loading-ring loading-lg"
+          className="absolute text-primary loading loading-ring loading-lg group-hover:text-base-100"
         />
       </button>
     </div>

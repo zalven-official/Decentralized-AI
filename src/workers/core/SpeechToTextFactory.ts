@@ -34,6 +34,7 @@ export const speechToText = async (event: MessageEvent) => {
     const transcriber = await p.getInstance((data: any) => {
       broadcast(BroadcastChannels.MODEL_PROCESSING, data);
     });
+
     const time_precision =
       transcriber.processor.feature_extractor.config.chunk_length /
       transcriber.model.config.max_source_positions;
